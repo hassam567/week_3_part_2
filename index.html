@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        body {
+            background: linear-gradient(#153677, #4e085f);
+        }
+
+        @media (min-width:0px) and (max-width:400px){
+
+            .firstDiv input {
+            padding: 2px;
+            border-radius: 2px;
+            /* Adjust the value to control the roundness */
+            border: 1px solid white;
+
+            box-sizing: border-box;
+            width: 100px;
+            
+       
+        }
+
+
+        }
+
+        @media (min-width:400px) and (max-width:1800px)
+        {
+            .firstDiv input {
+            padding: 10px;
+            border-radius: 15px;
+            /* Adjust the value to control the roundness */
+            border: 1px solid white;
+
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        }
+
+        
+
+        th{
+            background-color: grey;
+        }
+        td{
+            padding: 8px;
+            text-align: left;
+            background-color: aquamarine;
+
+            
+        }
+
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+          
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .firstDiv label {
+            display: block;
+            font-weight: 900;
+        }
+
+        .firstDiv button {
+            display: block;
+            font-weight: 900;
+            margin: 40px auto 0;
+
+            width: 100px;
+            cursor: pointer;
+        }
+  
+        @media (min-width:100px) and (max-width:2992px)
+        
+        {
+            .firstDiv {
+            width: 50%;
+            height: 300px;
+            border: 2px solid black;
+            /* margin: auto; */
+            text-align: center;
+            margin: auto;
+            background: #edeef0;
+        }
+        }
+
+     
+    </style>
+</head>
+
+<body>
+
+    <div class="firstDiv">
+        <label for="inputBox1" style="padding: 10px;">Enter First heading</label>
+        <input type="text" id="inputBox1" placeholder="Enter FirstName" style="padding: 10px; border-radius: 10%;">
+        <label for="inputBox1" style="padding: 10px;">Enter Second heading</label>
+        <input type="text" id="inputBox2" placeholder="Enter LastName" style="padding: 10px; border-radius:10%;">
+        <button type="button" onclick="showData()"
+            style="padding: 10px; background-color: red; color: white; border-radius: 20%;">Click</button>
+    </div>
+    <br>
+    <br>
+
+    <div>
+        <table id="table-row" style="margin: auto; margin-top: 30px;">
+            <tr id="headingRow">
+
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const inputBox1 = document.getElementById("inputBox1");
+        const inputBox2 = document.getElementById("inputBox2");
+        var table_Row = document.getElementById("table-row");
+        var headingsAdded = false; // Flag to track whether headings have been added
+
+        function showData() {
+            if (inputBox1.value.trim() === "") {
+                alert("Enter Values: ");
+            } else if (inputBox2.value.trim() === "") {
+                alert("Enter Values: ");
+            } else {
+                if (!headingsAdded) {
+                    var headingRow = document.getElementById("headingRow");
+
+                    var heading1 = document.createElement("th");
+                    heading1.innerHTML = "First Name";
+                    var heading2 = document.createElement("th");
+                    heading2.innerHTML = "Last Name";
+                    headingRow.appendChild(heading1);
+                    headingRow.appendChild(heading2);
+
+                    headingsAdded = true; // Set the flag to true after adding headings
+                }
+
+                var newRow = document.createElement("tr");
+                var newCell1 = document.createElement("td");
+                newCell1.innerHTML = inputBox1.value;
+                newRow.appendChild(newCell1);
+                var newCell2 = document.createElement("td");
+                newCell2.innerHTML = inputBox2.value;
+                newRow.appendChild(newCell2);
+                table_Row.appendChild(newRow);
+
+                inputBox1.value = "";
+                inputBox2.value = "";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
